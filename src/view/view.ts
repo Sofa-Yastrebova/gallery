@@ -1,9 +1,8 @@
-import Creator, { headerParams } from "../core/constructor";
+import { Header } from "../components/header";
 
 export default class View {
-  header = new Creator(headerParams);
-
+  element = new Header();
   constructor() {
-    document.body.append(this.header.getElement());
+    console.log(this.element.header);
   }
 }

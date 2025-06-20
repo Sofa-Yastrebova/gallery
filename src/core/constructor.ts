@@ -1,42 +1,4 @@
-// Создать класс конструктора, который будет создавать дом элемент
-// 1. класс должен принимать обЪект с параметрами ( как в заметках )  +
-//  2. класс должен содержать метод, который будет создавать тег    +
-//  3. класс должен содержать метод, который будет добавлять css классы на созданный тег   +
-//   4. класс должен содержать метод, который будет добавлять атрибуты на созданный тег    +
-//   5. класс должен содержать метод, который будет добавлять внутренний текст в созданный тег
-//  6. класс должен содержать метод, который будет возвращать тег наружу
-//  НЕ ИСПОЛЬЗОВАТЬ НЕЙРОСЕТИ
-
-interface attributesTypes {
-  [key: string]: string | number | boolean;
-}
-
-interface ParamsType {
-  tagName: string;
-  classList?: string;
-  attributes?: attributesTypes;
-  text?: string;
-}
-
-export const headerParams: ParamsType = {
-  tagName: "header",
-  classList: "test-class",
-  attributes: {
-    id: "test-id",
-    "data-test": "value",
-  },
-  text: "test",
-};
-
-export const textParams: ParamsType = {
-  tagName: "p",
-  classList: "text-class",
-  attributes: {
-    id: "textt-id",
-    "data-text": "value",
-  },
-  text: "text",
-};
+import type { ParamsType } from "./types.ts";
 
 export default class Creator {
   element: HTMLElement;
