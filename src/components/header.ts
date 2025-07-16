@@ -1,27 +1,35 @@
+import type { ParamsType } from "./../core/types";
 import Creator from "../core/constructor";
-import type { ParamsType } from "../core/types.ts";
 import { dataButtons } from "./data-buttons.ts";
 
 export const headerParams: ParamsType = {
   tagName: "header",
-  classList: "test-class",
-  attributes: {
-    id: "test-id",
-    "data-test": "value",
-  },
-  text: "test",
 };
 
 const ulParams: ParamsType = {
   tagName: "ul",
-  classList: "ul",
-  attributes: {
-    "data-name": "buttons",
-  },
 };
 
 const liParams: ParamsType = {
   tagName: "li",
+};
+
+const formParams: ParamsType = {
+  tagName: "form",
+};
+
+const inputSearchParams: ParamsType = {
+  tagName: "input",
+  attributes: {
+    type: "search",
+  },
+};
+
+const inputSubmitParams: ParamsType = {
+  tagName: "input",
+  attributes: {
+    type: "submit",
+  },
 };
 
 export class Header {
@@ -29,6 +37,7 @@ export class Header {
 
   constructor() {
     this.createDataButtons();
+    this.createForm();
   }
 
   createDataButtons() {
@@ -40,5 +49,16 @@ export class Header {
       ul?.append(item as HTMLLIElement);
     });
     this.header?.append(ul as HTMLUListElement);
+  }
+
+  createForm() {
+    const formElement = new Creator(formParams).getElement();
+    const inputSearchElement = new Creator(inputSearchParams).getElement();
+    const inputSubmitElement = new Creator(inputSubmitParams).getElement();
+    formElement?.append(
+      inputSearchElement as HTMLInputElement,
+      inputSubmitElement as HTMLInputElement,
+    );
+    this.header?.append(formElement as HTMLFormElement);
   }
 }
