@@ -22,6 +22,7 @@ const inputSearchParams: ParamsType = {
   tagName: "input",
   attributes: {
     type: "search",
+    name: "search",
   },
 };
 
@@ -34,10 +35,11 @@ const inputSubmitParams: ParamsType = {
 
 export class Header {
   header = new Creator(headerParams).getElement();
+  form;
 
   constructor() {
     this.createDataButtons();
-    this.createForm();
+    this.form = this.createForm();
   }
 
   createDataButtons() {
@@ -60,5 +62,6 @@ export class Header {
       inputSubmitElement as HTMLInputElement,
     );
     this.header?.append(formElement as HTMLFormElement);
+    return formElement;
   }
 }
