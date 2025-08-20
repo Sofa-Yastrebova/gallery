@@ -1,7 +1,7 @@
 import type { ParamsType } from "./types.ts";
 
 export default class Creator {
-  element: HTMLElement;
+  element: HTMLElement | HTMLImageElement;
   params: ParamsType;
 
   constructor(paramsObject: ParamsType) {
@@ -37,7 +37,7 @@ export default class Creator {
     }
   }
 
-  getElement(): HTMLElement | undefined {
+  getElement() {
     if (this.element) {
       return this.element;
     }

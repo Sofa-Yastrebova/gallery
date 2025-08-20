@@ -1,5 +1,5 @@
 import Creator from "../core/constructor";
-import type { ParamsType } from "../core/types";
+import type { AnswerTypes, ParamsType } from "../core/types";
 
 export const mainParams: ParamsType = {
   tagName: "main",
@@ -25,19 +25,22 @@ export class Main {
 
   constructor() {
     this.list = new Creator(ulParams);
-    this.main?.append(this.list.getElement());
+    this.main?.append(this.list.getElement() as HTMLUListElement);
   }
 
-  createImages(data) {
+  createImages(data: AnswerTypes) {
     const template = new DocumentFragment();
     data.results.forEach((element) => {
-      console.log(element);
-      const imgElement = new Creator(imgParams).getElement();
-      imgElement.src = element.urls.regular;
-      // 1.в src imgElement указать путь из елемента
+      const imgElement = new Creator(
+        imgParams,
+      ).getElement() as HTMLImageElement;
       const liElement = new Creator(liParams).getElement();
-      liElement?.append(imgElement);
-      template.append(liElement);
+
+      if (imgElement && liElement) {
+        imgElement.src = element.urls.regular;
+        liElement?.append(imgElement);
+        template.append(liElement);
+      }
     });
     this.list.getElement()?.append(template);
   }

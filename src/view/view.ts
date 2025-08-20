@@ -1,6 +1,7 @@
 import { Footer } from "../components/footer";
 import { Header } from "../components/header";
 import { Main } from "../components/main-element";
+import type { AnswerTypes } from "../core/types";
 
 export default class View {
   headerElement = new Header();
@@ -26,7 +27,7 @@ export default class View {
     }
   }
 
-  creatorOfImages(data) {
+  creatorOfImages(data: AnswerTypes) {
     this.mainElement.createImages(data);
   }
 }
