@@ -25,4 +25,8 @@ export default class View {
       );
     }
   }
+
+  creatorOfImages(data) {
+    this.mainElement.createImages(data);
+  }
 }

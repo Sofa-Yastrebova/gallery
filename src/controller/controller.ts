@@ -28,6 +28,7 @@ export default class Controller {
       `https://api.unsplash.com/search/photos/?client_id=nfz6uqutkSaOK5zHC7NQXLwql2V5WyQY7kiZrjMjIB4&page=1&per_page=16&query=${query}`,
     );
     const data = await answer.json();
+    this.view.creatorOfImages(data);
     console.log(data);
   }
 }
