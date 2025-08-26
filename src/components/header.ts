@@ -36,21 +36,25 @@ const inputSubmitParams: ParamsType = {
 export class Header {
   header = new Creator(headerParams).getElement();
   form;
+  listButtons;
 
   constructor() {
-    this.createDataButtons();
+    this.listButtons = this.createDataButtons();
     this.form = this.createForm();
   }
 
   createDataButtons() {
-    const ul = new Creator(ulParams).getElement();
+    const listButtons = new Creator(ulParams).getElement();
+
     dataButtons.forEach((element) => {
       const item = new Creator(liParams).getElement();
       const button = new Creator(element).getElement();
       item?.append(button as HTMLButtonElement);
-      ul?.append(item as HTMLLIElement);
+      listButtons?.append(item as HTMLLIElement);
     });
-    this.header?.append(ul as HTMLUListElement);
+
+    this.header?.append(listButtons as HTMLUListElement);
+    return listButtons;
   }
 
   createForm() {

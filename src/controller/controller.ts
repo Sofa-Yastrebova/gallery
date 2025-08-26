@@ -8,6 +8,7 @@ export default class Controller {
     this.model = new Model();
     this.view = new View();
     this.setFormListener();
+    this.setButtonsListener();
   }
 
   setFormListener() {
@@ -16,14 +17,28 @@ export default class Controller {
     );
   }
 
+  setButtonsListener() {
+    this.view.headerElement.listButtons?.addEventListener(
+      "click",
+      async (event: Event) => {
+        const isBtn = event.target as HTMLButtonElement;
+        if (isBtn) {
+          const buttonValue = isBtn
+            .closest("[data-query]")
+            ?.getAttribute("data-query");
+          if (buttonValue) {
+            const data = await this.model.createRequest(buttonValue);
+            this.view.creatorOfImages(data);
+          }
+        }
+      },
+    );
+  }
+
   async getDataInput(event: Event) {
     event.preventDefault();
-    const formData = new FormData(event.target as HTMLFormElement);
-    const query = formData.get("search");
-    const answer = await fetch(
-      `https://api.unsplash.com/search/photos/?client_id=nfz6uqutkSaOK5zHC7NQXLwql2V5WyQY7kiZrjMjIB4&page=1&per_page=16&query=${query}`,
-    );
-    const data = await answer.json();
+    const query = this.model.createFormData(event) as string;
+    const data = await this.model.createRequest(query);
     this.view.creatorOfImages(data);
   }
 }
