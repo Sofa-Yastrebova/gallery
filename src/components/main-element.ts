@@ -44,4 +44,8 @@ export class Main {
     });
     this.list.getElement()?.append(template);
   }
+
+  clearListImages() {
+    this.list.getElement().innerHTML = "";
+  }
 }

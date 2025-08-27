@@ -28,6 +28,7 @@ export default class Controller {
             ?.getAttribute("data-query");
           if (buttonValue) {
             const data = await this.model.createRequest(buttonValue);
+            this.view.mainElement.clearListImages();
             this.view.creatorOfImages(data);
           }
         }
@@ -39,6 +40,7 @@ export default class Controller {
     event.preventDefault();
     const query = this.model.createFormData(event) as string;
     const data = await this.model.createRequest(query);
+    this.view.mainElement.clearListImages();
     this.view.creatorOfImages(data);
   }
 }
