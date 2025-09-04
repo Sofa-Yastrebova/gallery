@@ -49,20 +49,31 @@ export class Header {
   listButtons;
 
   constructor() {
-    this.header = this.createHeader().getElement();
     this.listButtons = this.createDataButtons();
     this.form = this.createForm();
+    this.header = this.createHeader();
   }
 
   createHeader() {
-    const header = new Creator(headerParams);
-    const container = new Creator(containerParams);
-    const headerContent = new Creator(headerContentParams);
-    const containerElement = container.getElement() as HTMLElement;
-    const headerContentElement = headerContent.getElement() as HTMLElement;
-    header.getElement()?.append(containerElement);
-    container.getElement()?.append(headerContentElement);
-    return header;
+    const headerElement = new Creator(headerParams).getElement() as HTMLElement;
+    const containerElement = new Creator(
+      containerParams,
+    ).getElement() as HTMLElement;
+    const headerContentElement = new Creator(
+      headerContentParams,
+    ).getElement() as HTMLElement;
+
+    headerElement?.append(containerElement);
+    containerElement?.append(headerContentElement);
+
+    const listBtnsElement = this.listButtons;
+    const formElement = this.form;
+
+    if (listBtnsElement && formElement) {
+      headerContentElement?.append(listBtnsElement, formElement);
+    }
+
+    return headerElement;
   }
 
   createDataButtons() {
@@ -75,7 +86,6 @@ export class Header {
       listButtons?.append(item as HTMLLIElement);
     });
 
-    this.header.getElement()?.append(listButtons as HTMLUListElement);
     return listButtons;
   }
 
@@ -87,7 +97,6 @@ export class Header {
       inputSearchElement as HTMLInputElement,
       inputSubmitElement as HTMLInputElement,
     );
-    this.header.getElement()?.append(formElement as HTMLFormElement);
     return formElement;
   }
 }
