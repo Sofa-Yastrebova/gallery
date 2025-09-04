@@ -1,0 +1,21 @@
+/* #033649 
+#031634
+#FEFEEB */
+
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button,
+input {
+  background-color: transparent;
+  border: none;
+}
+
+body {
+  background-color: #04151c;
+}

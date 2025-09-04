@@ -1,9 +1,19 @@
-import type { ParamsType } from "./../core/types";
-import Creator from "../core/constructor";
+import type { ParamsType } from "../core/types.ts";
+import Creator from "../core/constructor.ts";
 import { dataButtons } from "./data-buttons.ts";
+import style from "./header-style.module.css";
 
 export const headerParams: ParamsType = {
   tagName: "header",
+  classList: style.header,
+};
+
+const containerParams: ParamsType = {
+  tagName: "div",
+};
+
+const headerContentParams: ParamsType = {
+  tagName: "div",
 };
 
 const ulParams: ParamsType = {
@@ -34,13 +44,25 @@ const inputSubmitParams: ParamsType = {
 };
 
 export class Header {
-  header = new Creator(headerParams).getElement();
+  header;
   form;
   listButtons;
 
   constructor() {
+    this.header = this.createHeader().getElement();
     this.listButtons = this.createDataButtons();
     this.form = this.createForm();
+  }
+
+  createHeader() {
+    const header = new Creator(headerParams);
+    const container = new Creator(containerParams);
+    const headerContent = new Creator(headerContentParams);
+    const containerElement = container.getElement() as HTMLElement;
+    const headerContentElement = headerContent.getElement() as HTMLElement;
+    header.getElement()?.append(containerElement);
+    container.getElement()?.append(headerContentElement);
+    return header;
   }
 
   createDataButtons() {
@@ -53,7 +75,7 @@ export class Header {
       listButtons?.append(item as HTMLLIElement);
     });
 
-    this.header?.append(listButtons as HTMLUListElement);
+    this.header.getElement()?.append(listButtons as HTMLUListElement);
     return listButtons;
   }
 
@@ -65,7 +87,7 @@ export class Header {
       inputSearchElement as HTMLInputElement,
       inputSubmitElement as HTMLInputElement,
     );
-    this.header?.append(formElement as HTMLFormElement);
+    this.header.getElement()?.append(formElement as HTMLFormElement);
     return formElement;
   }
 }

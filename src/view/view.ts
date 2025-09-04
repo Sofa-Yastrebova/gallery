@@ -1,6 +1,6 @@
-import { Footer } from "../components/footer";
-import { Header } from "../components/header";
-import { Main } from "../components/main-element";
+import { Footer } from "../components/footer-view";
+import { Header } from "../components/header-view";
+import { Main } from "../components/main-view";
 import type { AnswerTypes } from "../core/types";
 
 export default class View {
