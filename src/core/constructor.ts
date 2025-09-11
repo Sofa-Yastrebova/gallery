@@ -19,7 +19,7 @@ export default class Creator {
 
   setStyle() {
     if (this.params.classList && this.element) {
-      this.element.classList.add(this.params.classList);
+      this.element.classList.add(...this.params.classList);
     }
   }
 

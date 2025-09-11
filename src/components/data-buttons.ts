@@ -1,9 +1,10 @@
 import type { ParamsType } from "../core/types";
+import style from "./buttons-style.module.css";
 
 export const dataButtons: ParamsType[] = [
   {
     tagName: "button",
-    classList: "button",
+    classList: [style.button],
     attributes: {
       "data-query": "k-pop",
     },
@@ -11,15 +12,15 @@ export const dataButtons: ParamsType[] = [
   },
   {
     tagName: "button",
-    classList: "button",
+    classList: [style.button],
     attributes: {
       "data-query": "rock music",
     },
-    text: "rock music",
+    text: "rock",
   },
   {
     tagName: "button",
-    classList: "button",
+    classList: [style.button],
     attributes: {
       "data-query": "hip hop",
     },
@@ -27,15 +28,15 @@ export const dataButtons: ParamsType[] = [
   },
   {
     tagName: "button",
-    classList: "button",
+    classList: [style.button],
     attributes: {
       "data-query": "classic music",
     },
-    text: "classic music",
+    text: "classic",
   },
   {
     tagName: "button",
-    classList: "button",
+    classList: [style.button],
     attributes: {
       "data-query": "jazz",
     },
@@ -43,10 +44,10 @@ export const dataButtons: ParamsType[] = [
   },
   {
     tagName: "button",
-    classList: "button",
+    classList: [style.button],
     attributes: {
       "data-query": "electronic music",
     },
-    text: "electronic music",
+    text: "electronic",
   },
 ];

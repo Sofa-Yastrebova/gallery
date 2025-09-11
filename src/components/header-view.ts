@@ -5,19 +5,22 @@ import style from "./header-style.module.css";
 
 export const headerParams: ParamsType = {
   tagName: "header",
-  classList: style.header,
+  classList: [style.header],
 };
 
 const containerParams: ParamsType = {
   tagName: "div",
+  classList: [style.container],
 };
 
 const headerContentParams: ParamsType = {
   tagName: "div",
+  classList: [style.headerContent],
 };
 
 const ulParams: ParamsType = {
   tagName: "ul",
+  classList: [style.wrapperButtons],
 };
 
 const liParams: ParamsType = {
@@ -43,6 +46,11 @@ const inputSubmitParams: ParamsType = {
   },
 };
 
+const headerLineRarams: ParamsType = {
+  tagName: "hr",
+  classList: [style.headerLine],
+};
+
 export class Header {
   header;
   form;
@@ -62,8 +70,11 @@ export class Header {
     const headerContentElement = new Creator(
       headerContentParams,
     ).getElement() as HTMLElement;
+    const headerLineElement = new Creator(
+      headerLineRarams,
+    ).getElement() as HTMLElement;
 
-    headerElement?.append(containerElement);
+    headerElement?.append(containerElement, headerLineElement);
     containerElement?.append(headerContentElement);
 
     const listBtnsElement = this.listButtons;
