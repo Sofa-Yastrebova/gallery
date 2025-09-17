@@ -22,3 +22,45 @@
 .container {
   padding: 25px 40px;
 }
+
+.form {
+  display: flex;
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(
+    90deg,
+    rgba(213, 0, 255, 1) 0%,
+    rgba(9, 9, 121, 1) 50%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  border-image-slice: 1;
+  height: 36px;
+  align-items: center;
+  padding: 3px;
+  gap: 6px;
+}
+
+.inputSubmit {
+  background:
+    url(/search-icon.svg),
+    linear-gradient(
+      90deg,
+      rgba(213, 0, 255, 1) 0%,
+      rgba(9, 9, 121, 1) 50%,
+      rgba(0, 212, 255, 1) 100%
+    );
+  width: 36px;
+  background-position: center;
+  background-size: 70%;
+  height: 36px;
+  cursor: pointer;
+}
+
+.inputSearch,
+.inputSearch::placeholder {
+  outline: none;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Noto Serif", serif;
+}

@@ -29,20 +29,25 @@ const liParams: ParamsType = {
 
 const formParams: ParamsType = {
   tagName: "form",
+  classList: [style.form],
 };
 
 const inputSearchParams: ParamsType = {
   tagName: "input",
+  classList: [style.inputSearch],
   attributes: {
     type: "search",
     name: "search",
+    placeholder: "Search...",
   },
 };
 
 const inputSubmitParams: ParamsType = {
   tagName: "input",
+  classList: [style.inputSubmit],
   attributes: {
     type: "submit",
+    value: "",
   },
 };
 
