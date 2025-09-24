@@ -56,14 +56,21 @@ const headerLineRarams: ParamsType = {
   classList: [style.headerLine],
 };
 
+const burgerRarams: ParamsType = {
+  tagName: "button",
+  classList: [style.burgerButton],
+};
+
 export class Header {
   header;
   form;
   listButtons;
+  burger;
 
   constructor() {
     this.listButtons = this.createDataButtons();
     this.form = this.createForm();
+    this.burger = this.createBurger();
     this.header = this.createHeader();
   }
 
@@ -84,9 +91,10 @@ export class Header {
 
     const listBtnsElement = this.listButtons;
     const formElement = this.form;
+    const burgerElement = this.burger;
 
     if (listBtnsElement && formElement) {
-      headerContentElement?.append(listBtnsElement, formElement);
+      headerContentElement?.append(listBtnsElement, burgerElement, formElement);
     }
 
     return headerElement;
@@ -103,6 +111,11 @@ export class Header {
     });
 
     return listButtons;
+  }
+
+  createBurger() {
+    const burger = new Creator(burgerRarams).getElement();
+    return burger;
   }
 
   createForm() {
