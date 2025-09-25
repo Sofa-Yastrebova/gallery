@@ -22,6 +22,50 @@
 }
 
 .burgerButton {
+  padding: 0;
+  height: 43px;
+  width: 43px;
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(
+    90deg,
+    rgba(213, 0, 255, 1) 0%,
+    rgba(9, 9, 121, 1) 50%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  border-image-slice: 1;
+  display: none;
+  position: relative;
+}
+
+.burgerLine {
+  height: 2px;
+  width: 75%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.burgerLine::before,
+.burgerLine::after {
+  content: "";
+  display: block;
+  background-color: aliceblue;
+  position: absolute;
+  height: 2px;
+  right: 0;
+}
+
+.burgerLine::before {
+  width: 50%;
+  top: -6px;
+}
+
+.burgerLine::after {
+  width: 90%;
+  bottom: -6px;
 }
 
 .container {
@@ -83,5 +127,8 @@
 @media (max-width: 768px) {
   .wrapperButtons {
     display: none;
+  }
+  .burgerButton {
+    display: block;
   }
 }

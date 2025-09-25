@@ -61,6 +61,11 @@ const burgerRarams: ParamsType = {
   classList: [style.burgerButton],
 };
 
+const burgerLineRarams: ParamsType = {
+  tagName: "span",
+  classList: [style.burgerLine],
+};
+
 export class Header {
   header;
   form;
@@ -115,6 +120,10 @@ export class Header {
 
   createBurger() {
     const burger = new Creator(burgerRarams).getElement();
+    const burgerLine = new Creator(
+      burgerLineRarams,
+    ).getElement() as HTMLElement;
+    burger?.append(burgerLine);
     return burger;
   }
 
