@@ -61,12 +61,54 @@
 .burgerLine::before {
   width: 50%;
   top: -6px;
+  transition:
+    top 300ms 300ms,
+    transform 300ms,
+    width 300ms 0s;
 }
 
 .burgerLine::after {
   width: 90%;
   bottom: -6px;
+  transition:
+    bottom 300ms 300ms,
+    transform 300ms;
 }
+
+.burgerActive .burgerLine::before {
+  top: -1px;
+  transform: rotate(-45deg);
+  transition:
+    top 300ms,
+    transform 300ms 300ms,
+    width 300ms 0s;
+  width: 90%;
+}
+
+.burgerActive .burgerLine::after {
+  bottom: 0;
+  transform: rotate(45deg);
+  transition:
+    bottom 300ms,
+    transform 300ms 300ms,
+    width 300ms 0s;
+}
+
+/* .burgerLine.active::before,
+.burgerLine.active::after {
+    transform: translateY(50%);
+    transition: transform 0.3s ease, height 0.3s ease;
+}
+
+.burgerLine.active::before {
+    transition: margin-right 2s;
+    transform: translateY(50%) rotate(-45deg);
+}
+
+.burgerLine.active::after {
+transition: margin-right 2s;    
+transform: translateY(50%) rotate(45deg);
+} */
 
 .container {
   padding: 25px 40px;

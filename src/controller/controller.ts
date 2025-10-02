@@ -1,5 +1,6 @@
 import Model from "../model/model";
 import View from "../view/view";
+import headerStyle from "../components/header-style.module.css";
 
 export default class Controller {
   model;
@@ -9,6 +10,7 @@ export default class Controller {
     this.view = new View();
     this.setFormListener();
     this.setButtonsListener();
+    this.setBurgerListener();
   }
 
   setFormListener() {
@@ -34,6 +36,14 @@ export default class Controller {
         }
       },
     );
+  }
+
+  setBurgerListener() {
+    this.view.headerElement.burger?.addEventListener("click", () => {
+      this.view.headerElement.burger?.classList.toggle(
+        headerStyle.burgerActive,
+      );
+    });
   }
 
   async getDataInput(event: Event) {
