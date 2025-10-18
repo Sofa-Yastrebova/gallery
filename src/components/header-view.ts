@@ -1,6 +1,6 @@
 import type { ParamsType } from "../core/types.ts";
 import Creator from "../core/constructor.ts";
-import { dataButtons } from "./data-buttons.ts";
+import { dataBtnParams } from "./data-buttons.ts";
 import style from "./header-style.module.css";
 
 export const headerParams: ParamsType = {
@@ -25,6 +25,7 @@ const ulParams: ParamsType = {
 
 const liParams: ParamsType = {
   tagName: "li",
+  classList: [style.item],
 };
 
 const formParams: ParamsType = {
@@ -72,8 +73,8 @@ export class Header {
   listButtons;
   burger;
 
-  constructor() {
-    this.listButtons = this.createDataButtons();
+  constructor(genres) {
+    this.listButtons = this.createDataButtons(genres);
     this.form = this.createForm();
     this.burger = this.createBurger();
     this.header = this.createHeader();
@@ -105,12 +106,15 @@ export class Header {
     return headerElement;
   }
 
-  createDataButtons() {
+  createDataButtons(genres) {
     const listButtons = new Creator(ulParams).getElement();
 
-    dataButtons.forEach((element) => {
+    genres.forEach((element) => {
+      console.log(element);
       const item = new Creator(liParams).getElement();
-      const button = new Creator(element).getElement();
+      dataBtnParams.text = element.name;
+      dataBtnParams.attributes["data-query"] = element.name;
+      const button = new Creator(dataBtnParams).getElement();
       item?.append(button as HTMLButtonElement);
       listButtons?.append(item as HTMLLIElement);
     });

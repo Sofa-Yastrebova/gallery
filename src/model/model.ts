@@ -1,5 +1,20 @@
 export default class Model {
-  constructor() {}
+  options;
+  baseURL;
+  genres;
+  constructor() {
+    this.options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        "X-API-KEY": "2YDRCN4-GJJ4VXC-HX99D0W-HDBNKW8",
+      },
+    };
+    this.baseURL = "https://api.kinopoisk.dev/";
+    this.genres = this.createRequest(
+      "v1/movie/possible-values-by-field?field=genres.name",
+    );
+  }
 
   createFormData(event: Event) {
     const formData = new FormData(event.target as HTMLFormElement);
@@ -8,10 +23,11 @@ export default class Model {
   }
 
   async createRequest(query: string) {
-    const answer = await fetch(
-      `https://api.unsplash.com/search/photos/?client_id=nfz6uqutkSaOK5zHC7NQXLwql2V5WyQY7kiZrjMjIB4&page=1&per_page=16&query=${query}`,
-    );
+    const answer = await fetch(`${this.baseURL}${query}`, this.options);
     const data = await answer.json();
+    // console.log(data);
+
     return data;
   }
 }
+//v1/movie/possible-values-by-field?field=genres.name

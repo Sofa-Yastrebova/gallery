@@ -7,7 +7,11 @@ export default class Controller {
   view;
   constructor() {
     this.model = new Model();
-    this.view = new View();
+    this.init();
+  }
+
+  async init() {
+    this.view = new View(await this.model.genres);
     this.setFormListener();
     this.setButtonsListener();
     this.setBurgerListener();

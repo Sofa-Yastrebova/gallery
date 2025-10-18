@@ -9,9 +9,9 @@
 }
 
 .wrapperButtons {
-  display: grid;
-  /* grid-auto-flow: column; */
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
+  max-width: 650px;
+  overflow: auto;
   gap: 8px;
 }
 
@@ -154,6 +154,10 @@ transform: translateY(50%) rotate(45deg);
   font-weight: 500;
   font-size: 16px;
   font-family: "Noto Serif", serif;
+}
+
+.item {
+  flex-shrink: 0;
 }
 
 @media (max-width: 1024px) {

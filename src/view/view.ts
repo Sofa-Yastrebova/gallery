@@ -4,10 +4,15 @@ import { Main } from "../components/main-view";
 import type { AnswerTypes } from "../core/types";
 
 export default class View {
-  headerElement = new Header();
-  mainElement = new Main();
-  footerElement = new Footer();
-  constructor() {
+  headerElement;
+  mainElement;
+  footerElement;
+
+  constructor(genres) {
+    console.log(genres);
+    this.headerElement = new Header(genres);
+    this.mainElement = new Main();
+    this.footerElement = new Footer();
     this.interfaceBuilder();
   }
 
