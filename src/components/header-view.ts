@@ -18,6 +18,11 @@ const headerContentParams: ParamsType = {
   classList: [style.headerContent],
 };
 
+const gradientContainerParams: ParamsType = {
+  tagName: "div",
+  classList: [style.gradientContainer],
+};
+
 const ulParams: ParamsType = {
   tagName: "ul",
   classList: [style.wrapperButtons],
@@ -107,6 +112,7 @@ export class Header {
   }
 
   createDataButtons(genres) {
+    const gradientContainer = new Creator(gradientContainerParams).getElement();
     const listButtons = new Creator(ulParams).getElement();
 
     genres.forEach((element) => {
@@ -118,8 +124,8 @@ export class Header {
       item?.append(button as HTMLButtonElement);
       listButtons?.append(item as HTMLLIElement);
     });
-
-    return listButtons;
+    gradientContainer?.append(listButtons as HTMLElement);
+    return gradientContainer;
   }
 
   createBurger() {
