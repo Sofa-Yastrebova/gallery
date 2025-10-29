@@ -16,14 +16,6 @@
   padding-bottom: 12px;
 }
 
-/* W3C standard
-   сейчас только для Firefox */
-/* .wrapperButtons {
-  scrollbar-width: thin;
-  scrollbar-color: blue #42414008;
-} */
-
-/* для Chrome/Edge/Safari */
 .wrapperButtons::-webkit-scrollbar {
   height: 6px;
 }
@@ -247,5 +239,22 @@ transform: translateY(50%) rotate(45deg);
   }
   .burgerButton {
     display: block;
+  }
+  .gradientContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 450px;
+    height: 100vh;
+    background-color: #cc00de;
+    transform: translate(-100%);
+    transition: 1s;
+  }
+  .gradientContainerOpen {
+    transform: translate(0);
+  }
+  .headerContent {
+    justify-content: space-between;
+    gap: 20px;
   }
 }

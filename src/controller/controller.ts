@@ -47,6 +47,9 @@ export default class Controller {
       this.view.headerElement.burger?.classList.toggle(
         headerStyle.burgerActive,
       );
+      this.view.headerElement.listButtons.classList.toggle(
+        headerStyle.gradientContainerOpen,
+      );
     });
   }
 
