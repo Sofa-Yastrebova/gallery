@@ -50,6 +50,9 @@ export default class Controller {
       this.view.headerElement.listButtons.classList.toggle(
         headerStyle.gradientContainerOpen,
       );
+      // this.view.headerElement.listButtons.genres.classList.toggle(
+      //   headerStyle.gradientContainerOpen,
+      // );
     });
   }
 
