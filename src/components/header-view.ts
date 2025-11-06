@@ -72,6 +72,11 @@ const burgerLineRarams: ParamsType = {
   classList: [style.burgerLine],
 };
 
+const pseudoContainerParams: ParamsType = {
+  tagName: "div",
+  classList: [style.pseudoContainer],
+};
+
 export class Header {
   header;
   form;
@@ -113,6 +118,7 @@ export class Header {
 
   createDataButtons(genres) {
     const gradientContainer = new Creator(gradientContainerParams).getElement();
+    const pseudoContainer = new Creator(pseudoContainerParams).getElement();
     const listButtons = new Creator(ulParams).getElement();
 
     genres.forEach((element) => {
@@ -124,7 +130,8 @@ export class Header {
       item?.append(button as HTMLButtonElement);
       listButtons?.append(item as HTMLLIElement);
     });
-    gradientContainer?.append(listButtons as HTMLElement);
+    pseudoContainer?.append(listButtons as HTMLElement);
+    gradientContainer?.append(pseudoContainer as HTMLElement);
     return gradientContainer;
   }
 

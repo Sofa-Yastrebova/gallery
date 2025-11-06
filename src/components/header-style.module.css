@@ -43,7 +43,10 @@
   max-width: 650px;
 }
 
-.gradientContainer::after {
+.pseudoContainer {
+}
+
+.pseudoContainer::after {
   content: "";
   z-index: 2;
   pointer-events: none;
@@ -60,7 +63,7 @@
   );
 }
 
-.gradientContainer::before {
+.pseudoContainer::before {
   content: "";
   z-index: 2;
   pointer-events: none;
@@ -260,10 +263,6 @@ transform: translateY(50%) rotate(45deg);
     transition: 1s;
     padding: 90px 20px;
   }
-  .gradientContainer::before,
-  .gradientContainer::after {
-    display: none;
-  }
 
   .gradientContainerOpen {
     transform: translate(0);
@@ -271,5 +270,20 @@ transform: translateY(50%) rotate(45deg);
   .headerContent {
     justify-content: space-between;
     gap: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .wrapperButtons {
+    overflow: auto;
+    max-height: 80%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .pseudoContainer::before {
+    top: 0;
+  }
+  .pseudoContainer::after {
   }
 }
