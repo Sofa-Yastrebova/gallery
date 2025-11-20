@@ -10,7 +10,7 @@ export default class Model {
         "X-API-KEY": "2YDRCN4-GJJ4VXC-HX99D0W-HDBNKW8",
       },
     };
-    this.baseURL = "https://api.kinopoisk.dev/";
+    this.baseURL = "https://api.poiskkino.dev/";
     this.genres = this.createRequest(
       "v1/movie/possible-values-by-field?field=genres.name",
     );
