@@ -120,15 +120,22 @@ export class Header {
     const gradientContainer = new Creator(gradientContainerParams).getElement();
     const pseudoContainer = new Creator(pseudoContainerParams).getElement();
     const listButtons = new Creator(ulParams).getElement();
+    console.log(genres);
 
     genres.forEach((element) => {
-      console.log(element);
-      const item = new Creator(liParams).getElement();
-      dataBtnParams.text = element.name;
-      dataBtnParams.attributes["data-query"] = element.name;
-      const button = new Creator(dataBtnParams).getElement();
-      item?.append(button as HTMLButtonElement);
-      listButtons?.append(item as HTMLLIElement);
+      if (element.name != "для взрослых") {
+        const item = new Creator(liParams).getElement();
+        dataBtnParams.text = element.name;
+        if (
+          dataBtnParams.attributes &&
+          dataBtnParams.attributes["data-query"]
+        ) {
+          dataBtnParams.attributes["data-query"] = element.name;
+        }
+        const button = new Creator(dataBtnParams).getElement();
+        item?.append(button as HTMLButtonElement);
+        listButtons?.append(item as HTMLLIElement);
+      }
     });
     pseudoContainer?.append(listButtons as HTMLElement);
     gradientContainer?.append(pseudoContainer as HTMLElement);
